@@ -21,7 +21,6 @@ class ImageCard extends React.Component {
     return (
       <li
         style={{ gridRowEnd: `span ${this.state.rows}` }}
-        ref={this.imageContRef}
         className="image-list__image-container"
       >
         <img

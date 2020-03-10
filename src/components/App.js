@@ -4,7 +4,6 @@ import SearchBar from "./SearchBar";
 import ImageList from "./ImageList";
 import ErrorMessage from "./ErrorMessage";
 
-
 class App extends React.Component {
   state = { images: [], loadingClass: "", loadingFinished: false };
 
@@ -29,7 +28,8 @@ class App extends React.Component {
           submitProp={this.onSearchSubmit}
           loading={this.state.loadingClass}
         />
-        {this.state.images.length < 1 && this.state.loadingFinished == true && <ErrorMessage/>}
+        {this.state.images.length < 1 &&
+          this.state.loadingFinished === true && <ErrorMessage />}
         <ImageList images={this.state.images} />
       </div>
     );
