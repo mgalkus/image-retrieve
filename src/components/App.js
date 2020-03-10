@@ -2,9 +2,11 @@ import unsplash from "../api/unsplash";
 import React from "react";
 import SearchBar from "./SearchBar";
 import ImageList from "./ImageList";
+import ErrorMessage from "./ErrorMessage";
+
 
 class App extends React.Component {
-  state = { images: [], loadingClass: "" };
+  state = { images: [], loadingClass: "", loadingFinished: false };
 
   onSearchSubmit = async term => {
     this.setState({
@@ -14,9 +16,10 @@ class App extends React.Component {
       params: { query: term, per_page: 30 }
     });
     this.setState({
-      loadingClass: ""
+      images: response.data.results,
+      loadingClass: "",
+      loadingFinished: true
     });
-    this.setState({ images: response.data.results });
   };
 
   render() {
@@ -26,6 +29,7 @@ class App extends React.Component {
           submitProp={this.onSearchSubmit}
           loading={this.state.loadingClass}
         />
+        {this.state.images.length < 1 && this.state.loadingFinished == true && <ErrorMessage/>}
         <ImageList images={this.state.images} />
       </div>
     );
