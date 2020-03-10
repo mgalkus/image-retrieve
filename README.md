@@ -5,7 +5,8 @@ A homework task for Mediapark.
 
 ## Features
 - Fully responsive
-– Uses CSS Grid to display images
+- Error message informs user if no images are found
+- Uses CSS Grid to display images
 
 ## Installation
 Node.js required
